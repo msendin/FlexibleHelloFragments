@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frag_series"
         android:layout_width="200dip"
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
-        class="cat.udl.eps.fragments.ejflexible.ListFrag" />
-    <fragment
+        android:name="cat.udl.eps.fragments.ejflexible.ListFrag" />
+
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frag_capt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="cat.udl.eps.fragments.ejflexible.DetailFrag" />
+        android:name="cat.udl.eps.fragments.ejflexible.DetailFrag" />
 </LinearLayout>

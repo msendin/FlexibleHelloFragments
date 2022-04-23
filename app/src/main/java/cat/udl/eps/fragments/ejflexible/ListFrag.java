@@ -1,34 +1,36 @@
 package cat.udl.eps.fragments.ejflexible;
 
-import android.app.ListFragment;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ListFrag extends ListFragment{
-	
+import java.util.Objects;
+
+public class ListFrag extends ListFragment {
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+	public void onViewCreated(@NonNull View v, Bundle savedInstanceState) {
+		super.onViewCreated(v, savedInstanceState);
 		String[] values = new String[] { "Enterprise", "Star Trek", "Next Generation", "Deep Space 9", "Voyager"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
 	}
 
 	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		String item = (String) getListAdapter().getItem(position);
-		DetailFrag frag = (DetailFrag) getFragmentManager().findFragmentById(R.id.frag_capt);
-		if (frag != null && frag.isInLayout()) {
+	public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
+		String item = (String) Objects.requireNonNull(getListAdapter()).getItem(position);
+		DetailFrag frag = (DetailFrag) requireActivity().getSupportFragmentManager().findFragmentById(R.id.frag_capt);
+		if (frag != null  && frag.isInLayout()) {
 			frag.mostrarDetalle(getCapt(item));
 		}
 		else {

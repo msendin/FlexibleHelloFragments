@@ -1,11 +1,9 @@
 package cat.udl.eps.fragments.ejflexible;
  
-import android.app.Activity;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.widget.TextView;
- 
-public class DetailActivity extends Activity {
+import androidx.fragment.app.FragmentActivity;
+
+public class DetailActivity extends FragmentActivity {
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,8 +11,9 @@ public class DetailActivity extends Activity {
         setContentView(R.layout.detail);
         
            DetailFrag detalle =
-              (DetailFrag)getFragmentManager().findFragmentById(R.id.frag_capt);
- 
+              (DetailFrag) getSupportFragmentManager().findFragmentById(R.id.frag_capt);
+
+           if (detalle != null)
            detalle.mostrarDetalle(
               getIntent().getStringExtra("value"));
         
